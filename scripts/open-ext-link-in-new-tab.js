@@ -1,4 +1,4 @@
-/* SEE: https://github.com/TACC/tacc-web-utilities/blob/main/scripts/open-ext-link-new-tab.js */
+/* SEE: https://github.com/TACC/tacc-web-utilities/blob/main/scripts/open-ext-link-in-new-tab.js */
 
 // Define local paths that redirect to external URLs 
 // NOTE: This is ONLY necessary for old CMS sites 

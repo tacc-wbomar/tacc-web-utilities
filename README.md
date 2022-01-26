@@ -1,6 +1,6 @@
 # TACC Website Training & Events Blurb
 
-This project hosts reusable utility scripts for TACC websites, like [TACC](https://www.tacc.utexas.edu) or [Frontera CMS](https://frontera-portal.tacc.utexas.edu) or [<sub>3</sub>Dem.org](https://3dem.org/).
+This project hosts reusable utility scripts for TACC websites, like [TACC](https://www.tacc.utexas.edu) or [Frontera CMS](https://frontera-portal.tacc.utexas.edu) or [3Dem.org](https://3dem.org/).
 
 ## Usage
 

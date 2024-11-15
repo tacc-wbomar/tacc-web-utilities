@@ -1,10 +1,9 @@
 import json
-import re
-from datetime import datetime
+import argparse
 
-# Function to parse the mentors.html content
-def parse_mentors(html_content):
-    mentors = [
+# Function to parse the HTML content
+def parse_html(html_content, data_type):
+    data_list = [
         {
             "pk": 174054,
             "creation_date": "2024-11-13T19:27:54.575Z",
@@ -28,7 +27,7 @@ def parse_mentors(html_content):
         card_text = ''.join(line.strip() for line in lines[:5])
         interview = ''.join(line.strip() for line in lines[8:21])
 
-        participant = [
+        entry = [
             {
                 "pk": 174200 + i,
                 "creation_date": "2024-11-13T19:27:54.575Z",
@@ -142,18 +141,26 @@ def parse_mentors(html_content):
                 }
             }
         ]
-        mentors.extend(participant)
-    return mentors
+        data_list.extend(entry)
+    return data_list
 
-# Read the mentors.html file
-with open('mentors.html', 'r') as file:
-    html_content = file.read()
+# Main function to handle file reading and writing
+def main(file_name, data_type):
+    with open(file_name, 'r') as file:
+        html_content = file.read()
 
-# Parse the mentors
-mentors = parse_mentors(html_content)
+    data = parse_html(html_content, data_type)
 
-# Write to a new .json file
-with open('mentors.json', 'w') as json_file:
-    json.dump(mentors, json_file, indent=4)
+    output_file = f'{data_type}.json'
+    with open(output_file, 'w') as json_file:
+        json.dump(data, json_file, indent=4)
 
-print("mentors.json file has been created successfully.")
+    print(f"{output_file} file has been created successfully.")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Process HTML files to JSON.')
+    parser.add_argument('type', choices=['participants', 'mentors'], help='Type of data to process')
+    args = parser.parse_args()
+
+    file_name = f'{args.type}.html'
+    main(file_name, args.type)
